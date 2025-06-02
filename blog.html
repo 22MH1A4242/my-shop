@@ -1,19 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MyShop - Blog</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .blog-section {
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .blog-section h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+    }
+    .blog-post {
+      margin-bottom: 40px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 30px;
+    }
+    .blog-post img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .blog-post h2 {
+      margin-top: 15px;
+      font-size: 1.6rem;
+      color: #333;
+    }
+    .blog-post p {
+      color: #555;
+      line-height: 1.5;
+      margin-top: 10px;
+    }
+    .blog-post a.read-more {
+      display: inline-block;
+      margin-top: 12px;
+      text-decoration: none;
+      color: #0b7dda;
+      font-weight: bold;
+    }
+    .blog-post a.read-more:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tech2etc Ecommerce Tutorial</title>
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+<header>
+  <img src="img/logo.png" alt="Logo" class="logo-image" />
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="shop.html">Products</a> |
+    <a href="cart.html">Cart</a> |
+    <a href="blog.html">Blog</a> |
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
 
-        <link rel="stylesheet" href="style.css">
-    </head>
+<main>
+  <section class="blog-section">
+    <h1>Our Blog</h1>
 
-    <body>
+    <article class="blog-post">
+      <img src="img/blog/b1.jpg" alt="Blog Post 1" />
+      <h2>Latest Fashion Trends 2025</h2>
+      <p>Discover the hottest styles and trends for this year, from casual wear to office looks.</p>
+      <a href="#" class="read-more">Read More &raquo;</a>
+    </article>
 
-        <script src="script.js"></script>
-    </body>
+    <article class="blog-post">
+      <img src="img/blog/b2.jpg" alt="Blog Post 2" />
+      <h2>How to Style Your Summer Outfits</h2>
+      <p>Tips and tricks to stay cool and stylish during the hot summer months.</p>
+      <a href="#" class="read-more">Read More &raquo;</a>
+    </article>
 
+    <article class="blog-post">
+      <img src="img/blog/b3.jpg" alt="Blog Post 3" />
+      <h2>Essential Accessories for Every Wardrobe</h2>
+      <p>Accessorize like a pro with these must-have items that elevate any outfit.</p>
+      <a href="#" class="read-more">Read More &raquo;</a>
+    </article>
+
+    <article class="blog-post">
+      <img src="img/blog/b4.jpg" alt="Blog Post 4" />
+      <h2>Choosing the Right Shoes for Every Occasion</h2>
+      <p>From casual sneakers to formal shoes, find out what works best for your look.</p>
+      <a href="#" class="read-more">Read More &raquo;</a>
+    </article>
+
+    <article class="blog-post">
+      <img src="img/blog/b5.jpg" alt="Blog Post 5" />
+      <h2>Sustainable Fashion: Why It Matters</h2>
+      <p>Learn about sustainable materials and ethical brands making a difference.</p>
+      <a href="#" class="read-more">Read More &raquo;</a>
+    </article>
+
+    <article class="blog-post">
+      <img src="img/blog/b6.jpg" alt="Blog Post 6" />
+      <h2>Winter Wear: Stay Warm and Trendy</h2>
+      <p>Stay cozy without compromising your style during chilly months.</p>
+      <a href="#" class="read-more">Read More &raquo;</a>
+    </article>
+
+    <article class="blog-post">
+      <img src="img/blog/b7.jpg" alt="Blog Post 7" />
+      <h2>How to Build a Capsule Wardrobe</h2>
+      <p>Simple steps to create a versatile and timeless closet with fewer pieces.</p>
+      <a href="#" class="read-more">Read More &raquo;</a>
+    </article>
+
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 MyShop | All rights reserved.</p>
+</footer>
+
+</body>
 </html>

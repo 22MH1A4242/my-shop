@@ -1,25 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MyShop - Product Details</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Banner styles */
+    .banner-container {
+      max-width: 1000px;
+      margin: 20px auto;
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 10px;
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .banner-container img {
+      height: 100px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .banner-container img:hover {
+      transform: scale(1.05);
+    }
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tech2etc Ecommerce Tutorial</title>
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    /* Product detail styles */
+    .product-detail {
+      max-width: 600px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    .product-detail img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .product-detail h2 {
+      margin-top: 15px;
+    }
+    .product-detail p.price {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #444;
+    }
+    .product-detail p.description {
+      margin-top: 15px;
+      color: #555;
+    }
+    .product-detail button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .product-detail button:hover {
+      background-color: #555;
+    }
 
-        <link rel="stylesheet" href="style.css">
-    </head>
+    /* Header & Footer */
+    header {
+      background-color: #333;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header img.logo-image {
+      height: 40px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+      font-weight: 500;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #222;
+      color: white;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
 
-    <body>
+<header>
+  <img src="img/logo.png" alt="Logo" class="logo-image" />
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="shop.html">Products</a> |
+    <a href="cart.html">Cart</a> |
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
 
+<!-- Banner Section -->
+<div class="banner-container" id="banner-container">
+  <!-- Banner images will be inserted here -->
+</div>
 
-        <script>
-            // script for image change on click
-        </script>
+<main>
+  <div class="product-detail" id="product-detail">
+    <!-- Product details will be loaded here by script -->
+  </div>
+</main>
 
+<footer>
+  <p>© 2025 MyShop | All rights reserved.</p>
+</footer>
 
-        <script src="script.js"></script>
-    </body>
+<script>
+  // Banner images (b1.jpg to b20.jpg) excluding 3,5,8,9,11,12,13,14,15
+  const removedIndexes = [3,5,8,9,11,12,13,14,15];
+  const bannerContainer = document.getElementById('banner-container');
 
+  for(let i=1; i<=20; i++) {
+    if (!removedIndexes.includes(i)) {
+      const img = document.createElement('img');
+      img.src = `img/banner/b${i}.jpg`;
+      img.alt = `Banner b${i}`;
+      bannerContainer.appendChild(img);
+    }
+  }
+
+  // Products array (same as your shop page)
+  const products = [];
+
+  for (let i = 1; i <= 8; i++) {
+    products.push({
+      id: `f${i}`,
+      name: `Product f${i}`,
+      price: 400 + i * 50,
+      image: `img/products/f${i}.jpg`,
+      description: `This is the description for product f${i}.`
+    });
+  }
+
+  for (let i = 1; i <= 8; i++) {
+    products.push({
+      id: `n${i}`,
+      name: `Product n${i}`,
+      price: 500 + i * 60,
+      image: `img/products/n${i}.jpg`,
+      description: `This is the description for product n${i}.`
+    });
+  }
+
+  // Get product id from URL query parameter, e.g. sproduct.html?id=f3
+  const urlParams = new URLSearchParams(window.location.search);
+  const productId = urlParams.get('id');
+
+  const productDetailDiv = document.getElementById('product-detail');
+
+  if (!productId) {
+    productDetailDiv.innerHTML = "<p>No product selected.</p>";
+  } else {
+    // Find product by id
+    const product = products.find(p => p.id === productId);
+
+    if (!product) {
+      productDetailDiv.innerHTML = "<p>Product not found.</p>";
+    } else {
+      productDetailDiv.innerHTML = `
+        <img src="${product.image}" alt="${product.name}" />
+        <h2>${product.name}</h2>
+        <p class="price">₹${product.price}</p>
+        <p class="description">${product.description}</p>
+        <button id="add-to-cart-btn">Add to Cart</button>
+      `;
+
+      document.getElementById('add-to-cart-btn').addEventListener('click', () => {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${product.name} added to cart!`);
+      });
+    }
+  }
+</script>
+
+</body>
 </html>

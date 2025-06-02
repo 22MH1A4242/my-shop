@@ -1,19 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tech2etc Ecommerce Tutorial</title>
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop - Tech2etc Ecommerce Tutorial</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-        <link rel="stylesheet" href="style.css">
-    </head>
+<body>
 
-    <body>
+  <header>
+    <nav>
+      <div class="logo">🛍️ MyShop</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html" class="active">Products</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-        <script src="script.js"></script>
-    </body>
+  <main>
+    <h1>Products</h1>
+    <div id="product-list" class="products"></div>
+  </main>
+
+  <footer>
+    <p>© 2025 MyShop | All rights reserved.</p>
+  </footer>
+
+  <script>
+    const products = [];
+
+    // Load f1.jpg to f8.jpg from /img/products/
+    for (let i = 1; i <= 8; i++) {
+      products.push({
+        name: `Product f${i}`,
+        price: 400 + i * 50,
+        image: `img/products/f${i}.jpg`
+      });
+    }
+
+    // Load n1.jpg to n8.jpg from /img/products/
+    for (let i = 1; i <= 8; i++) {
+      products.push({
+        name: `Product n${i}`,
+        price: 500 + i * 60,
+        image: `img/products/n${i}.jpg`
+      });
+    }
+
+    const container = document.getElementById("product-list");
+
+    products.forEach((product, index) => {
+      const div = document.createElement("div");
+      div.classList.add("product-card");
+      div.innerHTML = `
+        <img src="${product.image}" alt="${product.name}" />
+        <h3>${product.name}</h3>
+        <p>₹${product.price}</p>
+        <button data-index="${index}">Add to Cart</button>
+      `;
+      container.appendChild(div);
+    });
+
+    container.addEventListener("click", function(event) {
+      if(event.target.tagName === "BUTTON") {
+        const index = event.target.getAttribute("data-index");
+        addToCart(products[index]);
+      }
+    });
+
+    function addToCart(product) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push(product);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`${product.name} added to cart!`);
+    }
+  </script>
+
+</body>
 
 </html>

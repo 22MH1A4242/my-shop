@@ -1,22 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MyShop - Cart</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+<header>
+  <img src="img/logo.png" alt="Logo" class="logo-image" />
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="shop.html">Products</a> |
+    <a href="cart.html">Cart</a> |
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
 
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+<main>
+  <h1>Your Shopping Cart</h1>
+  <div id="cart-items" class="cart-items"></div>
+  <h3>Total: ₹<span id="cart-total">0</span></h3>
+</main>
 
-        <link rel="stylesheet" href="style.css">
-    </head>
+<footer>
+  <p>© 2025 MyShop | All rights reserved.</p>
+</footer>
 
-    <body>
+<script>
+  function loadCart() {
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    const container = document.getElementById("cart-items");
+    const totalEl = document.getElementById("cart-total");
+    container.innerHTML = "";
 
+    let total = 0;
+    if (cartItems.length === 0) {
+      container.innerHTML = "<p>Your cart is empty.</p>";
+    } else {
+      cartItems.forEach((item, index) => {
+        total += item.price;
+        const itemDiv = document.createElement("div");
+        itemDiv.classList.add("cart-item");
+        itemDiv.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" width="80" style="vertical-align: middle;"/>
+          <span>${item.name} - ₹${item.price}</span>
+          <button class="remove-btn" data-index="${index}">Remove</button>
+        `;
+        container.appendChild(itemDiv);
+      });
+    }
+    totalEl.textContent = total.toFixed(2);
 
-        <script src="script.js"></script>
+    container.querySelectorAll(".remove-btn").forEach(button => {
+      button.addEventListener("click", (e) => {
+        const idx = e.target.getAttribute("data-index");
+        removeFromCart(idx);
+      });
+    });
+  }
 
-    </body>
+  function removeFromCart(index) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    loadCart();
+  }
 
+  window.onload = loadCart;
+</script>
+
+</body>
 </html>
