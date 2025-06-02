@@ -1,33 +1,44 @@
-# Build-and-Deploy-Ecommerce-Website-With-HTML-CSS-JavaScript
+# 🛍️ MyShop - Simple eCommerce Website
 
-[<img alt="Build-and-Deploy-Ecommerce-Website-With-HTML-CSS-JavaScript" width="100%" src="https://github.com/tech2etc/Youtube-Tutorials/blob/main/Build%20and%20Deploy%20Ecommerce%20Website%20With%20HTML%20CSS%20JavaScript%20Full%20Responsive%20Ecommerce%20Course%20FREE.PNG?raw=true" />](https://youtu.be/P8YuWEkTeuE/)
+Welcome to **MyShop**, a responsive and lightweight eCommerce website built with HTML, CSS, and JavaScript.
 
-## About this course
-LEARN HOW TO BUILD AND DEPLOY FULL RESPONSIVE ECOMMERCE WEBSITE USING HTML CSS & JAVASCRIPT. This is a free HTML CSS Course. And in this course we will learn how to build and deploy a full multipage ecommerce website completely from scratch step by step. Will Create from responsive navbar using html CSS JavaScript to responsive footer in one video.
+👉 **Live Demo**: [https://22MH1A4242.github.io/my-shop](https://22MH1A4242.github.io/my-shop)
 
-## Why This Course?
-- Responsive Ecommerce Website Tutorial Using HTML CSS & JavaScript.
-- Completely For Beginners.
-- Multipage Ecommerce Website Project.
-- Best Beginner Friendly Free Course On YouTube.
-- Learn How to build amazing professional and responsive websites.
-- Learn the fundamentals of web design.
-- Modern CSS, including flexbox and CSS Grid for layout.
-- Modern CSS techniques to create stunning designs and effects.
-- How to use common components and layout patterns for professional website design and development.
-- Advanced responsive design using media queries.
-- And Many More.
+## 🚀 Features
 
-## Sections
-- Part1: Responsive Home Page Design.
-- Part2: Shop Page & Single Product Page.
-- Part3: Blog Page.
-- Part4: About Page.
-- Part5: Contact Us.
-- Part6: Ecommerce Shopping Cart.
+- ✅ Responsive design for desktop and mobile
+- ✅ Dynamic product grid
+- ✅ Banner carousel (excluding specified banners)
+- ✅ Feature highlights section
+- ✅ Login/Logout using `localStorage`
+- ✅ Clickable product cards (linked to `sproduct.html`)
+- ✅ Built with vanilla HTML/CSS/JS
 
-Here you will find all the images I'm using to create this responsive ecommerce website. In future image folder can update.
+## 📁 Folder Structure
 
-Get the full source code from [here1](https://www.buymeacoffee.com/tech2etc/e/50932).
+my-shop/
+├── index.html
+├── style.css
+├── sproduct.html (optional)
+├── img/
+│ ├── logo.png
+│ ├── banner/
+│ │ └── b1.jpg ... b20.jpg (except 3, 5, 8, 9, 11-15)
+│ ├── features/
+│ │ └── f1.png to f4.png
+│ └── products/
+│ └── f1.jpg to f8.jpg
 
-Get the full source code from [here2](https://ko-fi.com/s/06e4db9e09).
+
+## 🧠 How It Works
+
+- **Login/Logout:** Uses `localStorage` to store username and update UI.
+- **Product Cards:** Dynamically generated from `f1–f8.jpg` and `n1–n8.jpg` with pricing logic.
+- **Banner Section:** Loads all `b1–b20.jpg` except removed images using a filtered loop.
+
+## 🛠️ How to Run Locally
+
+```bash
+git clone https://github.com/22MH1A4242/my-shop.git
+cd my-shop
+# Open index.html in any browser
